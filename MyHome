@@ -1,0 +1,94 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+/**
+ * @author Rakesh KR
+ *
+ */
+
+public class MyHome {
+
+	public void myHome(){
+		JFrame frame = new JFrame();
+		Draw   draw  = new Draw();
+		frame.getContentPane().add(draw);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800,500);
+		frame.setVisible(true);
+		draw.repaint();
+	}
+	
+	public static void main(String[] args) {
+		
+		MyHome myHome = new MyHome();
+		myHome.myHome();
+	}
+	
+	class Draw extends JPanel{
+		
+		private static final long serialVersionUID = 1L;
+		public void paintComponent(Graphics g){
+			
+			g.setColor(Color.MAGENTA);
+			g.fillRect(0,0,800,500);//Full
+			g.setColor(Color.GRAY);
+			g.fillRect(80,400,620,25);//Bottom Layer
+			g.setColor(Color.white);
+			g.fillRect(175,150,225,250);//Middle
+			g.setColor(Color.LIGHT_GRAY);
+			g.fillRect(95,150,80,250);//Left Side
+			g.setColor(Color.cyan);
+			g.fillRect(400,150,285,250);//Right Side
+			g.setColor(Color.white);
+			g.fillRect(453,200,180,102);//Window
+			
+			/*g.setColor(Color.RED);
+			for(int i=130,j=0;i>50;i--,j++)
+				g.drawLine(i,70+j,i+525+j+j,70+j);*/
+			
+			g.setColor(Color.BLACK);
+			g.drawRect(80,400,620,25);//Bottom Layer
+			g.drawRect(95,150,80,250);//Left Side
+			g.drawRect(175,325,150,75);//Grill
+			g.drawLine(175,324,325,324);
+			g.drawLine(324,324,324,399);
+			for(int i=175;i<324;i+=19){
+				g.drawLine(i, 325, i, 399);
+			}
+			g.drawRect(400,150,285,250);//Right Side
+			g.drawLine(70,150,710,150);//Roof
+			g.drawLine(70,150,130,70);
+			g.drawLine(130,70,655,70);
+			g.drawLine(655,70,710,150);
+			for(int i=150;i<380;i+=17){//BrickZ
+				g.drawRect(95,i,80,17);
+				if(i%2==0){
+					g.drawLine(95+20,i,95+20,i+17);
+					g.drawLine(95+60,i,95+60,i+17);
+				}
+				else{
+					g.drawLine(95+40,i,95+40,i+17);
+				}
+					
+			}
+			g.drawRect(453,200,180,102);//Window
+			for(int i=453;i<453+180;i+=60){
+				g.drawRect(i,200,60,100);
+				for(int j=i;j<i+60;j+=30){
+					g.drawRect(j+2,202,26,28);
+					if(j==i+30){
+						g.drawRect(j+2,272,26,28);
+						continue;
+					}
+					g.drawRect(j+2,272,26,28);
+					g.drawRect(j+2,232,56,38);
+				}
+			}
+		}
+		
+	}
+
+}
